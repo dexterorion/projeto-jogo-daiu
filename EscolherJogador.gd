@@ -17,3 +17,21 @@ func _process(delta):
 
 func _on_BotaoVoltar_pressed():
 	get_tree().change_scene("res://Config01.tscn")
+
+func verificaCadastroAluno(nome):
+	for aluno in global.dadosJogo["alunos"]:
+		if aluno.nome == nome:
+			return true
+	return false
+
+func _on_BotaoSalvar_pressed():
+	# buscar na lista de alunos se ja existe algum aluno cadastrado
+	# com o nome do aluno que foi informado pelo professor
+	global.alunoEscolhidoProfessor = get_node("InputNomeAluno").get_text()
+	
+	if verificaCadastroAluno(global.alunoEscolhidoProfessor) == false:
+		
+	
+
+	
+		
