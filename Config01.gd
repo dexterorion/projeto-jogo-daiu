@@ -17,3 +17,6 @@ func _process(delta):
 
 func _on_BotaoConfigurar_pressed():
 	get_tree().change_scene("res://EscolherJogador.tscn")
+
+func _on_TextureButton_pressed():
+	get_tree().change_scene("res://Inicio.tscn")

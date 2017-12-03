@@ -15,11 +15,5 @@ func _process(delta):
 	style.set_bg_color(color)
 	update()
 
-func _on_Button_pressed():
+func _on_BotaoVoltar_pressed():
 	get_tree().change_scene("res://Config01.tscn")
-	pass # replace with function body
-
-
-func _on_BotaoTocar_pressed():
-	get_node("SamplePlayer").play("smb3_coin")
-	pass # replace with function body
