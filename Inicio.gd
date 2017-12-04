@@ -11,6 +11,7 @@ var savegame = File.new()
 
 func _load_data():
 	global.arquivoSalvarDados = File.new()
+	global.dadosJogo = {}
 	if !global.arquivoSalvarDados.file_exists("dados.save"):
 		global.arquivoSalvarDados.open("dados.save", File.WRITE)
 		global.dadosJogo = {
