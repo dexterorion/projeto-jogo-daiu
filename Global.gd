@@ -13,11 +13,13 @@ var dadosJogo
 # conexao com o arquivo que salva os dados do aluno
 var arquivoSalvarDados
 
+# salva dados do jogo
 func salvar_dados():
 	arquivoSalvarDados.open("dados.save", File.READ_WRITE)
 	arquivoSalvarDados.store_string(dadosJogo.to_json())
 	arquivoSalvarDados.close()
 	
+# carrega dados do jogo
 func carregar_dados():
 	arquivoSalvarDados = File.new()
 	dadosJogo = {}
