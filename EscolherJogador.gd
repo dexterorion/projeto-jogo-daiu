@@ -18,20 +18,23 @@ func _process(delta):
 func _on_BotaoVoltar_pressed():
 	get_tree().change_scene("res://Config01.tscn")
 
-func verificaCadastroAluno(nome):
-	for aluno in global.dadosJogo["alunos"]:
+func retornaCadastroAluno(nome):
+	for aluno in global.dadosJogo.alunos:
 		if aluno.nome == nome:
-			return true
-	return false
+			return aluno
+	return null
 
 func _on_BotaoSalvar_pressed():
 	# buscar na lista de alunos se ja existe algum aluno cadastrado
 	# com o nome do aluno que foi informado pelo professor
-	global.alunoEscolhidoProfessor = get_node("InputNomeAluno").get_text()
+	var nomeAluno = get_node("InputNomeAluno").get_text()
+	var aluno = retornaCadastroAluno(nomeAluno)
 	
-	if verificaCadastroAluno(global.alunoEscolhidoProfessor) == false:
+	if aluno == null:
+		global.alunoEscolhidoProfessor = {"nome": nomeAluno, "pontuacao": 0, "acoes": []}
+		global.dadosJogo.alunos.append(global.alunoEscolhidoProfessor)
+		global.salvar_dados()
+	else:
+		global.alunoEscolhidoProfessor = aluno
 		
-	
-
-	
-		
+	get_tree().change_scene("res://DadosAluno.tscn")

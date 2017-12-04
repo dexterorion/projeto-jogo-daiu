@@ -12,3 +12,23 @@ var alunoJogando
 var dadosJogo
 # conexao com o arquivo que salva os dados do aluno
 var arquivoSalvarDados
+
+func salvar_dados():
+	arquivoSalvarDados.open("dados.save", File.READ_WRITE)
+	arquivoSalvarDados.store_string(dadosJogo.to_json())
+	arquivoSalvarDados.close()
+	
+func carregar_dados():
+	arquivoSalvarDados = File.new()
+	dadosJogo = {}
+	if !arquivoSalvarDados.file_exists("dados.save"):
+		arquivoSalvarDados.open("dados.save", File.WRITE)
+		dadosJogo = {
+			"alunos": []
+		}
+		arquivoSalvarDados.store_string(dadosJogo.to_json())
+		arquivoSalvarDados.close()
+	else:
+		arquivoSalvarDados.open("dados.save", File.READ_WRITE)
+		dadosJogo.parse_json(arquivoSalvarDados.get_line())
+		arquivoSalvarDados.close()
